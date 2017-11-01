@@ -1,0 +1,131 @@
+body{
+    background-color: #FAEBD7;
+    background-image: image(http://downloadicons.net/sites/default/files/film16-77123.png);
+background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 50%), url(http://downloadicons.net/sites/default/files/film16-77123.png);
+
+
+}
+head {
+
+  text-align:center;
+}
+
+.header{
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-size: 80px;
+  font-style: italic;
+  text-align:center
+}
+p{
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-size: 30px;
+  font-style: italic;
+  text-align:center
+}
+
+.addr{
+  text-align:center
+}
+
+
+ul{
+
+}
+h1{
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-size:80px;
+  font-style: italic;
+  background-image: url(https://blogs.chapman.edu/wp-content/uploads/sites/26/2014/11/il_fullxfull.373573585_fune.jpg);
+  text-align:center
+
+
+}
+
+h2{
+
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    font-size: 30px;
+    font-style: italic;
+    text-align:center
+  }
+  h3{
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px yellow, 0 0 5px orange;
+    font-size: 50px;
+    font-style: italic;
+    text-align:center
+
+  }
+#submit{
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-size: 50px;
+  font-style: italic;
+}
+.Movie{
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-size: 30px;
+  font-style: italic;
+  text-align:center
+}
+#movieTitle{
+
+}
+#movieYear{
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-size: 20px;
+  font-style: italic;
+}
+#list{
+  text-align:center
+}
+
+.manImg{
+  padding: 10px;
+
+   display: inline-block;
+   width:   100px;
+   height:  100px;
+   background-image: url("https://maxcdn.icons8.com/Share/icon/Hands//thumb_up1600.png");
+}
+.movieList{
+
+  text-align:center
+}
+
+button{
+  font-size: 30px;
+  color: white;
+  text-shadow: 2px 2px 4px black, 0 0 10px red, 0 0 10px darkred;
+  font-size: 20px;
+  border: 2px;
+  border-color: black;
+  padding: 10px 20px 8px 20px;
+  border-radius: 15px;
+  background-color: lightblue;
+
+}
+button:hover {
+    background-color: #cccc00; /* Green */
+    color: white;
+}
+
+input{
+  width: 15%;
+   box-sizing: border-box;
+
+   border: 2px solid #ccc;
+   border-radius: 4px;
+   font-size: 25px;
+   background-color: white;
+   background-image: url('searchicon.png');
+   background-position: 10px 10px;
+   background-repeat: no-repeat;
+   padding: 4px 15px 4px 40px;
+}

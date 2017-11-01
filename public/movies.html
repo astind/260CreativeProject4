@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>The Great Movie Rank! </title> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script src="javascripts/movies.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheets/movies.css">
+</head>
+<body>
+
+<div ng-app='app' ng-controller='movieCtrl'>
+
+<div class='header'>
+  <h1> The Great Movie Ranking </h1>
+  <p> Submit and Vote on your Favorite Movies </p>
+</div>
+
+<div class='addr'>
+  <h3>Add a Movie to the list here </h3>
+  <p>Type the name of the movie and the year it released, all lowercase with no spaces</p>
+  <p>Give the API a minute, but if nothing shows up you may have your info wrong</p> 
+  <form name='userMovie' ng-submit='addNew(userMovie)'>
+    <input placeholder='Title' ng-model='userMovie.title'/>
+    <input placeholder='Year' ng-model='userMovie.year'/>
+    <button type='submit'> Add Movie </button>
+  </form>  
+</div>
+
+<div class='movieList'ng-repeat="movie in movies | orderBy:'-votes'" >
+  <span>
+     <img ng-src="{{movie.poster}}"/>
+      <h2>{{movie.title}} </h2>
+       <p>{{movie.year}} </p>
+       <p> Votes: {{movie.votes}} </p>
+  </span>
+  <span class='upArrow' ng-click='upVote(movie)'><img class="manImg" src="https://maxcdn.icons8.com/Share/icon/Hands//thumb_up1600.png", align="middle"></img></span>
+  <span class='downArrow' ng-click='downVote(movie)'><img class="manImg" src="https://maxcdn.icons8.com/Share/icon/Hands//thumbs_down1600.png", align="middle"></img></span>
+</div>
+
+</div>
+
+</body>
+</html>
