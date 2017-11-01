@@ -1,54 +1,58 @@
 
 
-angular.module('app', [])
-  .controller('movieCtrl', movieCtrl)
-  .factory('movieFetcher', movieFetcher);
-
-function movieFetcher($http) {
-  console.log("started fetch");
-  var root = 'movies';
-  return {
-    get: function() {
-      return $http
-        .get(root)
-        .then(function (resp) {
-	  return resp.data;
-        })
-    }
-  }
-}
+var app = window.angular.module('app', [])
+  app.controller('movieCtrl', movieCtrl)
 
 
-function movieCtrl ($scope, $http, movieFetcher) {
+
+function movieCtrl ($scope, $http) {
 
   $scope.movies = [];
 
+  var getMovies = '/movies'
+  $http.get(getMovies).success(function (response) {
+     $scope.movies = response;
+  }).error(function() {
+      console.log("cant get movies");
+  });
+  
+
   $scope.addNew = function (movie) {
-    var movieUrl = 'movies';
-    $http({
-	url: movieUrl+'?m='+movie.title+'&y='+movie.year,
-	method: "POST"
-    }).success(function(data, status, headers, config) {
-      console.log("post worked");
-      movieFetcher.get()
-      .then(function (data) {
-        $scope.movies = data;
-      })
-    }).error(function(data ,status, headers, config) {
-      console.log("Post failed");
-    });
-    
+    var movieUrl = '/getmovies';
+    $http.get(movieUrl + '?m='+movie.title+'&y='+movie.year).success(function (response) {
+      $scope.movies = response;
+    }).error(function() {
+	console.log("Get error");
+    });    
+
     movie.title = '';
     movie.year = '';
-
   };
 
   $scope.upVote = function (movie) {
       movie.votes += 1;
+      $http({
+	url: getMovies,
+	method: "POST",
+	data: $scope.movies
+      }).success(function(data, status, headers, config) {
+	console.log("Post worked");
+      }).error(function(data, status, headers, config) {
+	console.log("post failed");
+      });
   };
 
   $scope.downVote = function (movie) {
       movie.votes -= 1;
+      $http({
+        url: getMovies,
+        method: "POST",
+        data: $scope.movies
+      }).success(function(data, status, headers, config) {
+        console.log("Post worked");
+      }).error(function(data, status, headers, config) {
+        console.log("post failed");
+      });
   };
 
 }
