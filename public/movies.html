@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>The Great Movie Rank! </title> 
+<title>Rank and Movie Quiz </title> 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 <script src="javascripts/movies.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheets/movies.css">
@@ -10,14 +10,14 @@
 <div ng-app='app' ng-controller='movieCtrl'>
 
 <div class='header'>
-  <h1> The Great Movie Ranking </h1>
-  <p> Submit and Vote on your Favorite Movies </p>
+  <h1> Favorite Movie Rank and Quiz </h1>
+  <p> Add movies, rank them, and quiz yourself </p>
 </div>
 
 <div class='addr'>
-  <h3>Add a Movie to the list here </h3>
+  <h3>Add a Movie to the list below </h3>
   <p>Type the name of the movie and the year it released with no spaces</p>
-  <p>Give the API a minute, but if nothing shows up you may have your info wrong</p> 
+  <p>It will then be added to the rankings and quiz game </p> 
   <form name='userMovie' ng-submit='addNew(userMovie)'>
     <input placeholder='Title' ng-model='userMovie.title'/>
     <input placeholder='Year' ng-model='userMovie.year'/>
@@ -25,9 +25,10 @@
   </form>  
 </div>
 <form class='rbuttons'>
-  Game or Rankings:
-  <input type="radio" ng-model="game" value="false"> Rankings
-  <input type="radio" ng-model="game" value="true"> Game
+  <input id="rank" type="radio" ng-model="game" value="false">
+  <label class="label1" for="rank">Rankings </label>
+  <input id="quiz" type="radio" ng-model="game" value="true">
+  <label class="label2" for="quiz">Quiz</label>
 </form>
 <div ng-switch="game">
  <div ng-switch-when="false">
