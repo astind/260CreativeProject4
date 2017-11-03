@@ -8,6 +8,9 @@ var app = window.angular.module('app', [])
 function movieCtrl ($scope, $http) {
 
   $scope.movies = [];
+  $scope.currentindex = 0;
+  $scope.correct = ''
+ 
 
   var getMovies = '/movies'
   $http.get(getMovies).success(function (response) {
@@ -16,6 +19,19 @@ function movieCtrl ($scope, $http) {
       console.log("cant get movies");
   });
   
+  $scope.checkAns = function(answer) {
+     if(answer.year == $scope.movies[$scope.currentindex].year) {
+         $scope.currentindex = (($scope.currentindex + 1) % $scope.movies.length);
+         $scope.correct = 'Correct!';
+         if($scope.currentindex == 0){
+	   $scope.correct = 'Congradulations! You got them all!';
+         }
+     }
+     else {
+        $scope.correct = 'Wrong!';
+     }
+  };
+
 
   $scope.addNew = function (movie) {
     var movieUrl = '/getmovies';

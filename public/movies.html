@@ -24,7 +24,14 @@
     <button type='submit'> Add Movie </button>
   </form>  
 </div>
-<div ng-if='movies.length'>
+<form class='rbuttons'>
+  Game or Rankings:
+  <input type="radio" ng-model="game" value="false"> Rankings
+  <input type="radio" ng-model="game" value="true"> Game
+</form>
+<div ng-switch="game">
+ <div ng-switch-when="false">
+ <div ng-if='movies.length'>
   <div class='movieList'ng-repeat="movie in movies | orderBy:'-votes'" >
     <span>
        <img ng-src="{{movie.poster}}"/>
@@ -35,6 +42,19 @@
     <span class='upArrow' ng-click='upVote(movie)'><img class="manImg" src="https://maxcdn.icons8.com/Share/icon/Hands//thumb_up1600.png", align="middle"></img></span>
     <span class='downArrow' ng-click='downVote(movie)'><img class="manImg" src="https://maxcdn.icons8.com/Share/icon/Hands//thumbs_down1600.png", align="middle"></img></span>
   </div>
+ </div>
+ </div>
+ <div class='movieList' ng-switch-when="true">
+   <p>See if you can match the Movie with the year it was released </p>
+   <p>If you get it right the answer it will change </p>
+   <img ng-src="{{movies[currentindex].poster}}"/>
+   <h2> {{movies[currentindex].title}}</h2> 
+   <form name='answer' ng-submit='checkAns(answer)'>
+     <input placeholder='Year?' ng-model='answer.year'/>
+     <button type='submit'> Make Guess </button>
+   </form>   
+   <p>{{correct}}</p>
+ </div>
 </div>
 </div>
 
